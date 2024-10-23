@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main page</title>
+    <link rel="stylesheet" href="static/css/main.css">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='image/car.svg.png') }}">
+</head>
+<body>
+
+<button class="button-3d" onclick="redirectToMessage()">Incoming messages</button>
+
+    <script>
+        function redirectToMessage() {
+            window.location.href = "/message";
+        }
+    </script>
+</body>
+</html>

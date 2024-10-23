@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incoming messages</title>
+    <link rel="stylesheet" href="static/css/message.css">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='image/car.svg.png') }}">
+
+</head>
+<body>
+    
+    <button class="button-back" onclick="goBack()">Go back</button>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                <ul>
+                    {% for category, message in messages %}
+                        <li class="flash-{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    {% endwith %}
+    
+
+    <table>
+      <tr>
+        <th>Id</th>
+        <th>Image</th>
+        <th>View image</th>
+        <th>Download image</th>
+        <th>Download txt</th>
+        <th>Delete Image</th>
+      </tr>
+
+
+      {% for img_path in images %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td><img src="{{ url_for('static', filename=img_path) }}" alt="Image" style="width:50px;"></td> 
+        <td><a href="{{ url_for('static', filename=img_path) }}" target="_blank">View image</a></td> 
+        <td><a href="{{ url_for('download_file', filename=img_path.split('/')[-1]) }}">Download image</a></td>
+        <td><a href="{{ url_for('download_txt', filename=img_path.split('/')[-1].replace('.jpg', '.txt')) }}">Download txt</a></td>
+        <td>
+          <form action="{{ url_for('delete_file', filename=img_path.split('/')[-1]) }}" method="POST">
+          <button type="submit">Delete</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+
+
+    </table>
+
+    <script>
+        function goBack() {
+            window.history.back(); 
+        }
+    </script>
+</body>
+</html>

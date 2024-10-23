@@ -1,0 +1,9 @@
+Flask
+numpy
+Celery
+redis
+flower
+eventlet
+matplotlib
+opencv-python
+pytesseract

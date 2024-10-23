@@ -1,0 +1,26 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+    margin: 0;
+    background-color: gainsboro;
+    font-family: Arial, sans-serif;
+}
+
+.button-3d {
+    padding: 15px 30px;
+    font-size: 20px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0 4px #0056b3, 0 6px 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.button-3d:active {
+    box-shadow: 0 2px #0056b3, 0 4px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(2px);
+}
