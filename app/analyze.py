@@ -53,7 +53,7 @@ def enlarge_img(image, scale_percent):
     
 @celery.task
 def start_func(image , path_to_folder_img):
-    carplate_img_rgb = open_img(img_path=path_to_folder_img + "\\" + image)
+    carplate_img_rgb = open_img(img_path=path_to_folder_img + "/" + image)
     cascade_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'haarcascade_russian_plate_number.xml')
     carplate_haar_cascade = cv2.CascadeClassifier(cascade_path)
 
